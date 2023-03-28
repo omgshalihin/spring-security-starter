@@ -1,6 +1,6 @@
 package com.springSecurity.starter.controller;
 
-import com.springSecurity.starter.dto.Product;
+import com.springSecurity.starter.dto.ProductDTO;
 import com.springSecurity.starter.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +23,12 @@ public class ProductController {
     }
 
     @GetMapping("/all")
-    public List<Product> getAllTheProducts() {
+    public List<ProductDTO> getAllTheProducts() {
         return service.getProducts();
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable int id) {
+    public ProductDTO getProductById(@PathVariable int id) {
         return service.getProduct(id);
     }
 }

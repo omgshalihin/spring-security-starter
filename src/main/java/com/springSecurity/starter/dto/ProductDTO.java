@@ -3,7 +3,7 @@ package com.springSecurity.starter.dto;
 import lombok.Builder;
 
 @Builder
-public record Product(
+public record ProductDTO(
         int productId,
         String name,
         int qty,
