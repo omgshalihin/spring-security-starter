@@ -1,6 +1,14 @@
+server:
+  port: 8080
+  error:
+    include-message: always
 spring:
   config:
     import: env.properties
+  security:
+    user:
+      name: user
+      password: password
 #  datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #    url: jdbc:mysql://localhost:5432/shalihin

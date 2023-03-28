@@ -26,7 +26,7 @@ public class ProductService {
     }
 
 
-    public List<ProductDTO> getProducts() {
+    public List<ProductDTO> getAllProducts() {
         return productDTOList;
     }
 
