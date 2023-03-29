@@ -41,3 +41,6 @@ public UserDetailsService userDetailsService(PasswordEncoder encoder) {
 }
 ```
 ## [Authorization](https://docs.spring.io/spring-security/reference/servlet/authorization/index.html)
+@EnableMethodSecurity
+@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+@PreAuthorize("hasAuthority('ROLE_USER')")

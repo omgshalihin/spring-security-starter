@@ -3,6 +3,7 @@ package com.springSecurity.starter.controller;
 import com.springSecurity.starter.dto.ProductDTO;
 import com.springSecurity.starter.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,11 +24,13 @@ public class ProductController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<ProductDTO> getAllTheProducts() {
         return service.getAllProducts();
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_USER')")
     public ProductDTO getProductById(@PathVariable int id) {
         return service.getProduct(id);
     }
