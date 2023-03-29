@@ -10,6 +10,7 @@
 - Lombok
 
 ## To Get Started
+### setup
 clone this git repository into your local folder
 ```
 git clone git@github.com:omgshalihin/spring-security-starter.git
@@ -24,6 +25,21 @@ DB_USER=<mongoDB_user>
 DB_PWD=<mongoDB_password>
 DB_ENDPOINT=<mongoDB_endpoint>
 DB_NAME=<mongoDB_name>
+```
+### create user and store into database
+POST http://localhost:8080/users/new
+- JSON body example
+```
+{
+    "username" : "shalihin",
+    "password" : "password",
+    "email" : "shalihin@mail.com",
+    "roles" : "role_admin,role_user"
+}
+```
+- expected output
+```
+User [shalihin] has been added to the database
 ```
 
 ## [Authentication](https://docs.spring.io/spring-security/reference/servlet/authentication/index.html)
