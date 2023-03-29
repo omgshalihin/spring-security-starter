@@ -22,7 +22,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
         .authenticated().and().formLogin().and().build();
 }
 ```
-[In-Memory Authentication](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/in-memory.html)
+[In-Memory Authentication](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/in-memory.html): Users & Passwords
 ```
 @Bean
 public UserDetailsService userDetailsService(PasswordEncoder encoder) {
@@ -39,6 +39,11 @@ public UserDetailsService userDetailsService(PasswordEncoder encoder) {
         
     return new InMemoryUserDetailsManager(admin, user);
 }
+```
+OR
+save users and password to Database
+```
+kk
 ```
 ## [Authorization](https://docs.spring.io/spring-security/reference/servlet/authorization/index.html)
 @EnableMethodSecurity
