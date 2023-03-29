@@ -30,7 +30,6 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_USER')")
     public ProductDTO getProductById(@PathVariable int id) {
         return productService.getProduct(id);
     }

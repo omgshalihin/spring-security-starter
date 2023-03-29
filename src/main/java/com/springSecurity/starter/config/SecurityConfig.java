@@ -17,30 +17,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-
-        // In-Memory Authentication: users and passwords
-//        UserDetails admin = User.withUsername("admin")
-//                .password(encoder.encode("password"))
-//                .roles("ADMIN")
-//                .build();
-//        UserDetails user = User.withUsername("user")
-//                .password(encoder.encode("password"))
-//                .roles("USER")
-//                .build();
-//        return new InMemoryUserDetailsManager(admin, user);
-
-        // Database details: users and passwords
-        return new DatabaseUserDetailsService();
-    }
-
     //authenticate rest endpoints
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -52,6 +28,17 @@ public class SecurityConfig {
                 .authenticated().and().formLogin().and().build();
     }
 
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new DatabaseUserDetailsService();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    // required to authenticate
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();

@@ -25,7 +25,6 @@ public class ProductService {
                 ).collect(Collectors.toList());
     }
 
-
     public List<ProductDTO> getAllProducts() {
         return productDTOList;
     }

@@ -22,9 +22,9 @@ public class UserService {
 
     public String createUser(UserModel userModel) {
         userModel.setPassword(passwordEncoder.encode(userModel.getPassword()));
-        userModel.setRoles(userModel.getPassword().toUpperCase());
+        userModel.setRoles(userModel.getRoles().toUpperCase());
         userRepository.save(userModel);
-        return String.format("User [%s] has been added to the database", userModel.getUserName());
+        return String.format("User [%s] has been added to the database", userModel.getUsername());
     }
 
 
