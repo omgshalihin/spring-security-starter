@@ -16,7 +16,7 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    private ProductService service;
+    private ProductService productService;
 
     @GetMapping("/welcome")
     public String welcome() {
@@ -26,12 +26,12 @@ public class ProductController {
     @GetMapping("/all")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<ProductDTO> getAllTheProducts() {
-        return service.getAllProducts();
+        return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ROLE_USER')")
     public ProductDTO getProductById(@PathVariable int id) {
-        return service.getProduct(id);
+        return productService.getProduct(id);
     }
 }

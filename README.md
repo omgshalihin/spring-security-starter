@@ -32,12 +32,12 @@ public UserDetailsService userDetailsService(PasswordEncoder encoder) {
         .roles("ADMIN")
         .build();
         
-    UserDetails user = User.withUsername("user")
+    UserDetails userModel = User.withUsername("userModel")
         .password(encoder.encode("password"))
         .roles("USER")
         .build();
         
-    return new InMemoryUserDetailsManager(admin, user);
+    return new InMemoryUserDetailsManager(admin, userModel);
 }
 ```
 OR

@@ -5,12 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -23,18 +20,23 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // In-Memory Authentication: users and passwords
+
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder encoder) {
-        UserDetails admin = User.withUsername("admin")
-                .password(encoder.encode("password"))
-                .roles("ADMIN")
-                .build();
-        UserDetails user = User.withUsername("user")
-                .password(encoder.encode("password"))
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(admin, user);
+
+        // In-Memory Authentication: users and passwords
+//        UserDetails admin = User.withUsername("admin")
+//                .password(encoder.encode("password"))
+//                .roles("ADMIN")
+//                .build();
+//        UserDetails user = User.withUsername("user")
+//                .password(encoder.encode("password"))
+//                .roles("USER")
+//                .build();
+//        return new InMemoryUserDetailsManager(admin, user);
+
+        // Database details: users and passwords
+        return new DatabaseUserDetailsService();
     }
 
     //authenticate rest endpoints

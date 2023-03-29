@@ -10,11 +10,12 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class UserModel {
 
     @MongoId
     private String userId;
-    private String name;
-    private String email;
+    private String userName;
     private String password;
+    private String email;
+    private String roles;
 }
