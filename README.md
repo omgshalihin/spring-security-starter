@@ -43,6 +43,10 @@ User [shalihin] has been added to the database
 ```
 
 ## [Authentication](https://docs.spring.io/spring-security/reference/servlet/authentication/index.html)
+Create a new `class` called `SecurityConfig` and annotate the class with the following:
+- @Configuration 
+- @EnableWebSecurity 
+- @EnableMethodSecurity
 
 Reading Username/Password: [Form Login](https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/form.html)
 - config/SecurityConfig.java
@@ -158,6 +162,9 @@ public AuthenticationProvider authenticationProvider() {
 
 
 ## [Authorization](https://docs.spring.io/spring-security/reference/servlet/authorization/index.html)
-@EnableMethodSecurity
+[Expression-Based Access Control](https://docs.spring.io/spring-security/reference/servlet/authorization/expression-based.html):
+- `controller/ProductController.java` OR `controller/UserController.java`
+```
 @PreAuthorize("hasAuthority('ROLE_ADMIN')")
 @PreAuthorize("hasAuthority('ROLE_USER')")
+```
